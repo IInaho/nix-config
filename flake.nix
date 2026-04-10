@@ -10,8 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix4nvchad = {
-      url = "github:nix-community/nix4nvchad";
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,13 +24,13 @@
 
   outputs = { 
     self, nixpkgs, home-manager, 
-    nix4nvchad, claude-code, noctalia, ... 
+    nixvim, noctalia, claude-code, ... 
   }@inputs:
   {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 
       modules = [
-        ({ ... }: {
+	({ ... }: {
           nixpkgs.hostPlatform = "x86_64-linux";
           nixpkgs.config.allowUnfree = true;
           nixpkgs.overlays = [
@@ -45,14 +45,13 @@
           home-manager.useUserPackages = true;
 
           home-manager.sharedModules = [
-            inputs.nix4nvchad.homeManagerModules.default
+            inputs.nixvim.homeModules.nixvim
             inputs.noctalia.homeModules.default
           ];
 
           home-manager.users.lznauy = import ./home/default.nix;
         }
       ];
-
       specialArgs = { inherit inputs; };
     };
   };

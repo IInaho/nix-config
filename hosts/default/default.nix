@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [];
+  imports = [
+    ./i18n.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -9,13 +11,14 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  networking.proxy.default = "http://192.168.5.76:7897/";
+  networking.proxy.noProxy = "127.0.0.1,localhost";
+
   nix.settings.substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   virtualisation.vmware.guest.enable = true;
   virtualisation.docker.enable = true;
-
-  time.timeZone = "Asia/Shanghai";
 
   users.users.lznauy = {
     isNormalUser = true;
@@ -25,18 +28,17 @@
 
   programs.zsh.enable = true;
   
-  # Niri
   programs.niri.enable = true;
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.displayManager.gdm.wayland = true;
 
   environment.systemPackages = with pkgs; [
-    vim
     wget
     git
     curl
     htop
+    vim
   ];
 
   services.openssh.enable = true;

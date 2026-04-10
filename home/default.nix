@@ -5,8 +5,10 @@
   imports = [
     ./git.nix
     ./zsh.nix
-    ./nvchad.nix
+    ./nixvim.nix
     ./noctalia.nix
+    ./niri.nix
+    ./kitty.nix
   ];
 
   home.packages = with pkgs; [
@@ -16,7 +18,6 @@
     ripgrep
 
     zsh-powerlevel10k
-    nerd-fonts.jetbrains-mono
 
     claude-code
     opencode
@@ -28,5 +29,8 @@
     nodejs
     python3
     go
+    tree-sitter
+
+    kitty
   ];
 }
