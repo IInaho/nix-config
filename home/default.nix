@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   home.stateVersion = "26.05";
 
@@ -9,9 +9,11 @@
     ./noctalia.nix
     ./niri.nix
     ./kitty.nix
+    ./fcitx5.nix
+    ./fastfetch.nix
   ];
 
-  home.packages = with pkgs; [
+home.packages = with pkgs; [
     fastfetch
     tree
     fd

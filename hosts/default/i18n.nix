@@ -20,6 +20,24 @@
       "zh_CN.UTF-8/UTF-8"
       "en_US.UTF-8/UTF-8"
     ];
+
+    inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5.addons = with pkgs; [
+        fcitx5-mellow-themes
+        qt6Packages.fcitx5-chinese-addons
+      ];
+      fcitx5.waylandFrontend = true;
+    };
+  };
+
+  environment.sessionVariables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    SDL_IM_MODULE = "fcitx";
+    GLFW_IM_MODULE = "fcitx";
   };
 
   fonts = {
