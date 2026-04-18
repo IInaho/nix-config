@@ -11,13 +11,13 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  networking.proxy.default = "http://192.168.5.76:7897/";
+  networking.proxy.default = "http://192.168.1.142:7897/";
   networking.proxy.noProxy = "127.0.0.1,localhost";
 
   nix.settings.substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  virtualisation.vmware.guest.enable = true;
+ virtualisation.vmware.guest.enable = true;
   virtualisation.docker.enable = true;
 
   users.users.lznauy = {
