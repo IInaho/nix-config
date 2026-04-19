@@ -48,7 +48,7 @@
           };
           pinyin.globalSection = {
             PageSize = 9;
-            CloudPinyinEnabled = false;
+            CloudPinyinEnabled = "True";
           };
           chttrans.globalSection = {
             Engine = "OpenCC";

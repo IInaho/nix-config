@@ -17,7 +17,7 @@
   nix.settings.substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
- virtualisation.vmware.guest.enable = true;
+  virtualisation.vmware.guest.enable = true;
   virtualisation.docker.enable = true;
 
   users.users.lznauy = {

@@ -11,7 +11,9 @@
 
 ## 键位说明
 
-> **Mod 键**: `Alt`（在 VM/嵌套窗口中运行时的默认值，Niri 在 TTY 上默认使用 Super）
+> **Mod 键**: 
+> - 本地 TTY 运行: `Super`（Windows 键 / macOS Command 键）
+> - VM/嵌套窗口中运行: `Alt`
 >
 > **Leader 键** (Neovim): `Space`（空格键）
 
@@ -26,8 +28,8 @@
 | `Mod + Shift + /` | 显示快捷键覆盖层 | 弹出快捷键概览 |
 | `Mod + T` | 打开终端 | 启动 kitty 终端 |
 | `Mod + D` | 应用程序启动器 | 启动 fuzzel |
-| `Super + Alt + L` | 锁定屏幕 | 启动 swaylock |
-| `Super + Alt + S` | 启动/重启 orca | 屏幕阅读器 |
+| `Mod + Shift + L` | 锁定屏幕 | 启动 swaylock |
+| `Mod + Shift + S` | 启动/重启 orca | 屏幕阅读器 |
 
 ### 窗口焦点切换
 
@@ -55,19 +57,19 @@
 
 | 快捷键 | 功能 | 说明 |
 |--------|------|------|
-| `Mod + Shift + H` / `Mod + Shift + ←` | 切换到左显示器 | |
-| `Mod + Shift + J` / `Mod + Shift + ↓` | 切换到下显示器 | |
-| `Mod + Shift + K` / `Mod + Shift + ↑` | 切换到上显示器 | |
-| `Mod + Shift + L` / `Mod + Shift + →` | 切换到右显示器 | |
+| `Mod + Shift + ←` | 切换到左显示器 | |
+| `Mod + Shift + ↓` | 切换到下显示器 | |
+| `Mod + Shift + ↑` | 切换到上显示器 | |
+| `Mod + Shift + →` | 切换到右显示器 | |
 
 ### 窗口在显示器间移动
 
 | 快捷键 | 功能 | 说明 |
 |--------|------|------|
-| `Mod + Shift + Ctrl + H` | 将列移至左显示器 | |
-| `Mod + Shift + Ctrl + J` | 将列移至下显示器 | |
-| `Mod + Shift + Ctrl + K` | 将列移至上显示器 | |
-| `Mod + Shift + Ctrl + L` | 将列移至右显示器 | |
+| `Mod + Shift + Ctrl + ←` | 将列移至左显示器 | |
+| `Mod + Shift + Ctrl + ↓` | 将列移至下显示器 | |
+| `Mod + Shift + Ctrl + ↑` | 将列移至上显示器 | |
+| `Mod + Shift + Ctrl + →` | 将列移至右显示器 | |
 
 ### 工作区操作
 

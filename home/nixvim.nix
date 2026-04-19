@@ -117,11 +117,5 @@
        };
       lsp.enable = true;
     };
-
-    # 自动重新加载外部修改的文件
-    extraConfigVim = ''
-      autocmd FocusGained * checktime
-      autocmd FileChangedShellPost * edit
-    '';
   };
 }

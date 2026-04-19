@@ -11,6 +11,8 @@
     ./kitty.nix
     ./fcitx5.nix
     ./fastfetch.nix
+    ./fuzzel.nix
+    ./hyprlock.nix
   ];
 
 home.packages = with pkgs; [
