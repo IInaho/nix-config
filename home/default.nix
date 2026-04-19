@@ -21,6 +21,7 @@ home.packages = with pkgs; [
     tree
     fd
     ripgrep
+    bat
 
     zsh-powerlevel10k
 
