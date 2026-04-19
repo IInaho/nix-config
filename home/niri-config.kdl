@@ -2,6 +2,10 @@
 // 文档: https://niri-wm.github.io/niri/Configuration:-Introduction.html
 // KDL 格式: https://kdl.dev
 
+environment {
+    QS_ICON_THEME "WhiteSur-dark"
+}
+
 // ============================================================
 // 窗口规则 (window-rule)
 // 为特定窗口设置自定义规则，如透明度、圆角等

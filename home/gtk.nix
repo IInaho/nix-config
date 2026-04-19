@@ -1,0 +1,33 @@
+{ config, pkgs, lib, ... }:
+
+let
+  iconThemeName = "WhiteSur-dark";
+in
+{
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = iconThemeName;
+      package = pkgs.whitesur-icon-theme;
+    };
+  };
+
+  gtk.gtk3 = {
+    enable = lib.mkDefault true;
+  };
+
+  gtk.gtk4 = {
+    enable = lib.mkDefault true;
+  };
+
+  home.sessionVariables = {
+    XDG_ICON_THEME = iconThemeName;
+    QT_QPA_PLATFORMTHEME = "gtk3";
+    QS_ICON_THEME = iconThemeName;
+  };
+
+  home.packages = with pkgs; [
+    whitesur-icon-theme
+    hicolor-icon-theme
+  ];
+}

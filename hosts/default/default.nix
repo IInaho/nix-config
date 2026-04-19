@@ -33,6 +33,10 @@
   services.displayManager.gdm.enable = true;
   services.displayManager.gdm.wayland = true;
 
+  environment.sessionVariables = {
+    QS_ICON_THEME = "WhiteSur-dark";
+  };
+
   environment.systemPackages = with pkgs; [
     wget
     git

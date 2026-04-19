@@ -4,6 +4,7 @@
 
   imports = [
     ./git.nix
+    ./gtk.nix
     ./zsh.nix
     ./nixvim.nix
     ./noctalia.nix
@@ -36,5 +37,6 @@ home.packages = with pkgs; [
     tree-sitter
 
     kitty
+    google-chrome
   ];
 }
