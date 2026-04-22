@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   xdg.configFile."niri/config.kdl" = {
     source = ./niri-config.kdl;
     force = true;
@@ -11,6 +12,11 @@
 
   xdg.configFile."niri/noctalia-shell.kdl" = {
     source = ./noctalia-shell.kdl;
+    force = true;
+  };
+
+  xdg.configFile."niri/animation.kdl" = {
+    source = ./animation.kdl;
     force = true;
   };
 }

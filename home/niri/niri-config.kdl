@@ -4,6 +4,7 @@
 
 include "./noctalia-shell.kdl"
 include "./binds.kdl"
+include "./animation.kdl"
 
 environment {
     QS_ICON_THEME "WhiteSur-dark"

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -16,14 +21,22 @@
   networking.proxy.noProxy = "127.0.0.1,localhost";
 
   nix.settings.substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   virtualisation.vmware.guest.enable = true;
   virtualisation.docker.enable = true;
 
   users.users.lznauy = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "users" "networkmanager" "docker" ];
+    extraGroups = [
+      "wheel"
+      "users"
+      "networkmanager"
+      "docker"
+    ];
   };
 
   # users.users.lznauy.shell = pkgs.zsh;

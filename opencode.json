@@ -1,5 +1,6 @@
 {
-  "$schema": "https://opencode.ai/config.schema.json",
+  "$schema": "https://opencode.ai/config.json",
+  "model": "volcengine-plan/ark-code-latest",
   "mcp": {
     "nixos": {
       "type": "local",
@@ -7,14 +8,13 @@
       "enabled": true
     }
   },
-  "model": "volcengine-plan/ark-code-latest",
   "provider": {
     "volcengine-plan": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Volcano Engine",
       "options": {
         "baseURL": "https://ark.cn-beijing.volces.com/api/coding/v3",
-        "apiKey": "d93b6b77-7bba-4fe0-945f-18d02fca5863"
+        "apiKey": "8b64f59c-d4e1-4546-bb4a-70528300ef68"
       },
       "models": {
         "ark-code-latest": {
@@ -43,6 +43,21 @@
             "input": [
               "text",
               "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "glm-5.1": {
+          "name": "glm-5.1",
+          "limit": {
+            "context": 200000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text"
             ],
             "output": [
               "text"
@@ -119,6 +134,21 @@
             ]
           }
         },
+        "minimax-m2.7": {
+          "name": "minimax-m2.7",
+          "limit": {
+            "context": 200000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
         "minimax-m2.5": {
           "name": "minimax-m2.5",
           "limit": {
@@ -128,6 +158,22 @@
           "modalities": {
             "input": [
               "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "kimi-k2.6": {
+          "name": "kimi-k2.6",
+          "limit": {
+            "context": 256000,
+            "output": 4096
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
             ],
             "output": [
               "text"
