@@ -20,9 +20,19 @@
     ./fuzzel.nix
     ./hyprlock.nix
     ./nh.nix
+    ./cava.nix
+    ./btm.nix
   ];
 
   home.packages = with pkgs; [
+
+    net-tools # 网络工具
+    translate-shell # 命令行翻译工具
+    libcaca # 终端彩色ASCII图像库
+    yq # 类似jq, 可解析yaml
+    jq # 解析json
+    unzip # 解压zip
+    duf # 查看系统磁盘的空间使用情况 better df
 
     fastfetch # 查看系统信息
     tree # 目录树
@@ -36,6 +46,21 @@
     nixfmt-tree # nix格式化工具
     just # 简化版makefile
     fzf # 终端模糊搜索神器
+    lazygit # git终端工具
+
+    asciinema # 终端视频录制工具
+    asciinema-agg # cast -> gif
+    # asciinema rec demo.cast
+    # asciinema play demo.cast
+
+    isd # systemd TUI
+    kmon # 内核编译和管理TUI
+
+    # 截图
+    grim
+    slurp
+    # 截图后编辑
+    satty
 
     claude-code
     opencode
