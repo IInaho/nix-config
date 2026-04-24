@@ -9,6 +9,7 @@
   imports = [
     ./i18n.nix
     ./clash-verge.nix
+    ./xwayland.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -46,7 +47,6 @@
   programs.fish.enable = true;
 
   programs.niri.enable = true;
-  services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.displayManager.gdm.wayland = true;
 

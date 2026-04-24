@@ -8,6 +8,17 @@
   programs.noctalia-shell = {
     enable = true;
     systemd.enable = true;
+    plugins = {
+      sources = [
+        {
+          enabled = true;
+          name = "Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = { };
+      version = 2;
+    };
     settings = {
       general = {
         language = "zh-CN";
@@ -51,7 +62,16 @@
               id = "Launcher";
             }
             {
+              id = "WallpaperSelector";
+            }
+            {
               id = "Clock";
+              formatHorizontal = "HH:mm"; # 水平格式
+              formatVertical = "HH:mm"; # 垂直格式
+              tooltipFormat = "HH:mm ddd, MMM dd"; # 提示格式
+              clockColor = "none"; # 颜色 (none=默认)
+              useCustomFont = false; # 使用自定义字体
+              customFont = ""; # 自定义字体
             }
             {
               id = "SystemMonitor";
@@ -136,14 +156,6 @@
               pinned = [ ]; # 固定的应用列表
             }
             {
-              id = "NotificationHistory";
-              hideWhenZero = false; # 计数为零时隐藏
-              hideWhenZeroUnread = false; # 无未读时隐藏
-              iconColor = "none"; # 图标颜色 (none=默认)
-              showUnreadBadge = true; # 显示未读徽章
-              unreadBadgeColor = "primary"; # 未读徽章颜色
-            }
-            {
               id = "Volume";
               displayMode = "alwaysShow"; # 显示模式 (alwaysShow/hidden/iconOnly)
               iconColor = "none"; # 图标颜色 (none=默认)
@@ -156,6 +168,14 @@
               displayMode = "alwaysShow"; # 显示模式
               iconColor = "none"; # 图标颜色 (none=默认)
               textColor = "none"; # 文字颜色 (none=默认)
+            }
+            {
+              id = "NotificationHistory";
+              hideWhenZero = false; # 计数为零时隐藏
+              hideWhenZeroUnread = false; # 无未读时隐藏
+              iconColor = "none"; # 图标颜色 (none=默认)
+              showUnreadBadge = true; # 显示未读徽章
+              unreadBadgeColor = "primary"; # 未读徽章颜色
             }
             {
               id = "Network";
@@ -219,6 +239,16 @@
       colorSchemes = {
         predefinedScheme = "Dracula";
         darkMode = true;
+      };
+      network = {
+        wifiEnabled = true; # 启用 WiFi
+        airplaneModeEnabled = false; # 飞行模式
+        bluetoothRssiPollingEnabled = false; # 蓝牙 RSSI 轮询
+        bluetoothRssiPollIntervalMs = 10000; # 蓝牙 RSSI 轮询间隔 (毫秒)
+        bluetoothHideUnnamedDevices = false; # 隐藏未命名蓝牙设备
+        bluetoothDetailsViewMode = "grid"; # 蓝牙详情视图: grid/list
+        wifiDetailsViewMode = "grid"; # WiFi 详情视图: grid/list
+        disableDiscoverability = false; # 禁用被发现
       };
       dock = {
         enabled = true; # 启用停靠栏

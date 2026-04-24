@@ -34,5 +34,6 @@ in
   home.packages = with pkgs; [
     whitesur-icon-theme
     hicolor-icon-theme
+    papirus-icon-theme
   ];
 }

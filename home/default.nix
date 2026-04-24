@@ -12,8 +12,8 @@
     ./gtk.nix
     ./shell/default.nix
     ./nixvim.nix
-    ./noctalia.nix
     ./niri/default.nix
+    ./niri/noctalia.nix
     ./kitty.nix
     ./fcitx5.nix
     ./fastfetch.nix
@@ -22,6 +22,10 @@
     ./nh.nix
     ./cava.nix
     ./btm.nix
+    ./xdg/default.nix
+    ./xdg/mime.nix
+    ./xdg/autostart.nix
+    ./xdg/desktop-files.nix
   ];
 
   home.packages = with pkgs; [
@@ -59,8 +63,7 @@
     # 截图
     grim
     slurp
-    # 截图后编辑
-    satty
+    wl-clipboard
 
     claude-code
     opencode
@@ -77,5 +80,7 @@
     kitty
     google-chrome
     splayer
+    qq # QQ 客户端
+    telegram-desktop # Telegram 客户端
   ];
 }
