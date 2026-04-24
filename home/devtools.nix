@@ -10,6 +10,5 @@
     python3
     go
     tree-sitter
-    nodePackages.vite # 前端构建工具
   ];
 }

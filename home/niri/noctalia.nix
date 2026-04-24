@@ -275,5 +275,6 @@
   home.file.".config/noctalia/wallpapers" = {
     source = ./wallpapers;
     recursive = true;
+    force = true;
   };
 }
