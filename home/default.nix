@@ -34,6 +34,7 @@
   home.packages = with pkgs; [
     gifski # mp4 转 gif 工具
     ffmpeg # 视频处理工具
+    openssl
 
     net-tools # 网络工具
     translate-shell # 命令行翻译工具
@@ -42,6 +43,13 @@
     jq # 解析json
     unzip # 解压zip
     duf # 查看系统磁盘的空间使用情况 better df
+    iotop # 查看io监控
+    cloc # 统计代码数
+    doggo # dns终端可视化
+    dive # docker image 分析工具
+    lsof # 查询端口开放
+    wget # 终端下载工具
+
 
     fastfetch # 查看系统信息
     tree # 目录树
@@ -56,6 +64,7 @@
     just # 简化版makefile
     fzf # 终端模糊搜索神器
     lazygit # git终端工具
+    hugo # 博客框架
 
     asciinema # 终端视频录制工具
     asciinema-agg # cast -> gif
@@ -70,13 +79,15 @@
     slurp
     wl-clipboard
 
+    # ai
     claude-code
     opencode
     mcp-nixos
 
-    kitty
-    google-chrome
-    splayer
+    # app
+    kitty # 终端
+    google-chrome # 浏览器
+    splayer # 音乐播放器
     qq # QQ 客户端
     telegram-desktop # Telegram 客户端
   ];

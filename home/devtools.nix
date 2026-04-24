@@ -8,6 +8,7 @@
     gnumake
     nodejs
     python3
+    python3Packages.pip
     go
     tree-sitter
   ];
