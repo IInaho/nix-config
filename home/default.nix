@@ -26,9 +26,14 @@
     ./xdg/mime.nix
     ./xdg/autostart.nix
     ./xdg/desktop-files.nix
+    ./devtools.nix
   ];
 
+  programs.obs-studio.enable = true; # OBS Studio 录屏软件
+
   home.packages = with pkgs; [
+    gifski # mp4 转 gif 工具
+    ffmpeg # 视频处理工具
 
     net-tools # 网络工具
     translate-shell # 命令行翻译工具
@@ -68,14 +73,6 @@
     claude-code
     opencode
     mcp-nixos
-
-    git
-    gcc
-    gnumake
-    nodejs
-    python3
-    go
-    tree-sitter
 
     kitty
     google-chrome

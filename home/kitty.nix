@@ -17,6 +17,7 @@
       tab_bar_min_tabs = "1";
       confirm_os_window_close = "0";
       tab_powerline_style = "slanted";
+      allow_hyperlinks = "no";
     };
 
     themeFile = "VSCode_Dark";
