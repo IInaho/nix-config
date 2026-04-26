@@ -1,3 +1,4 @@
+# noctalia-shell - Wayland 桌面 Shell(状态栏/通知/启动器等)
 {
   config,
   pkgs,

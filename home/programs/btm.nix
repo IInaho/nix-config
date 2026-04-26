@@ -1,3 +1,4 @@
+# bottom - 终端系统资源监控工具
 { ... }:
 {
   programs.bottom = {

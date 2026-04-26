@@ -35,36 +35,36 @@
   ];
 
   home.packages = with pkgs; [
-    gifski
-    ffmpeg
-    openssl
+    gifski # 高质量 GIF 编码器
+    ffmpeg # 多媒体处理框架
+    openssl # 加密库与命令行工具
 
-    net-tools
-    translate-shell
-    libcaca
-    yq
-    jq
-    unzip
-    duf
-    iotop
-    cloc
-    doggo
-    dive
-    lsof
-    wget
+    net-tools # 网络配置工具集(ifconfig 等)
+    translate-shell # 终端翻译工具
+    libcaca # 文本模式图形渲染库
+    yq # YAML/TOML 命令行处理器
+    jq # JSON 命令行处理器
+    unzip # ZIP 解压工具
+    duf # 磁盘用量可视化工具
+    iotop # I/O 监控工具
+    cloc # 代码行数统计工具
+    doggo # 现代 DNS 查询工具
+    dive # Docker 镜像层分析工具
+    lsof # 查看打开文件工具
+    wget # HTTP 下载工具
 
-    tree
-    fd
-    ripgrep
-    bat
-    chafa
-    yazi
-    tmux
-    sops
-    nixfmt-tree
-    just
-    fzf
-    lazygit
-    hugo
+    tree # 目录树展示工具
+    fd # 快速文件查找工具
+    ripgrep # 高性能文本搜索工具
+    bat # 带语法高亮的 cat 替代品
+    chafa # 终端图像渲染工具
+    yazi # 终端文件管理器
+    tmux # 终端复用器
+    sops # 密钥加密管理工具
+    nixfmt-tree # Nix 代码格式化工具
+    just # 命令运行器(Makefile 替代品)
+    fzf # 模糊搜索工具
+    lazygit # 终端 Git 客户端
+    hugo # 静态网站生成器
   ];
 }

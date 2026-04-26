@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    xdg-utils
+    xdg-utils # XDG 命令行工具集(open/xdg-open 等)
   ];
 
   xdg = {

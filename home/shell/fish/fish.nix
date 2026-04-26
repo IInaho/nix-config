@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.starship ];
+  home.packages = [ pkgs.starship ]; # 跨 shell 美化提示符
 
   xdg.configFile."starship.toml".source = ./starship.toml;
 

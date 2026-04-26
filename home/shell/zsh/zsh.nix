@@ -4,7 +4,7 @@ let
   p10k-theme = pkgs.zsh-powerlevel10k;
 in
 {
-  home.packages = [ p10k-theme ];
+  home.packages = [ p10k-theme ]; # zsh-powerlevel10k Zsh 主题
 
   home.shell.enableZshIntegration = true;
 

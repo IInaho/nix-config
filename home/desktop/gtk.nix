@@ -32,8 +32,8 @@ in
   };
 
   home.packages = with pkgs; [
-    whitesur-icon-theme
-    hicolor-icon-theme
-    papirus-icon-theme
+    whitesur-icon-theme # macOS 风格图标主题
+    hicolor-icon-theme # 标准回退图标主题
+    papirus-icon-theme # Papirus 图标主题
   ];
 }

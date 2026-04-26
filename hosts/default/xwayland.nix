@@ -5,6 +5,6 @@
   services.xserver.enable = true;
 
   environment.systemPackages = [
-    pkgs.xwayland-satellite
+    pkgs.xwayland-satellite # XWayland 兼容层桥接器
   ];
 }

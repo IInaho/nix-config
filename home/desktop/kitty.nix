@@ -1,3 +1,4 @@
+# kitty - GPU 加速终端模拟器
 { config, pkgs, ... }:
 
 {

@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    asciinema
-    asciinema-agg
+    asciinema # 终端会话录制工具
+    asciinema-agg # asciinema 录制转 GIF 工具
   ];
 }

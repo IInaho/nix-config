@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    grim
-    slurp
-    wl-clipboard
+    grim # Wayland 截图工具
+    slurp # Wayland 区域选择工具
+    wl-clipboard # Wayland 剪贴板工具
   ];
 
   xdg.configFile."niri/config.kdl" = {

@@ -1,3 +1,4 @@
+# fuzzel - Wayland 应用启动器
 { ... }:
 {
   programs.fuzzel = {

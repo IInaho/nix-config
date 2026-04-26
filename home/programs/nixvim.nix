@@ -1,3 +1,4 @@
+# nixvim - Nix 管理的 Neovim 配置
 { pkgs, lib, ... }:
 
 {

@@ -31,12 +31,12 @@
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
-      nerd-fonts.fira-code
-      nerd-fonts.jetbrains-mono
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-color-emoji
+      nerd-fonts.fira-code # FiraCode Nerd Font 等宽字体
+      nerd-fonts.jetbrains-mono # JetBrains Mono Nerd Font 等宽字体
+      noto-fonts # Google Noto 通用字体
+      noto-fonts-cjk-sans # Noto CJK 无衬线字体(中日韩)
+      noto-fonts-cjk-serif # Noto CJK 衬线字体(中日韩)
+      noto-fonts-color-emoji # Noto 彩色 Emoji 字体
     ];
     fontconfig = {
       enable = true;

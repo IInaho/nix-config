@@ -1,3 +1,4 @@
+# nh - NixOS 辅助管理工具(重建/清理)
 { config, pkgs, ... }:
 {
   programs.nh = {

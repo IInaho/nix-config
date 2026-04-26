@@ -1,3 +1,4 @@
+# cava - 音频频谱可视化工具
 {
   config,
   pkgs,

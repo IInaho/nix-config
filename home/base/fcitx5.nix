@@ -1,3 +1,4 @@
+# fcitx5 - 输入法框架(中文拼音等)
 {
   config,
   lib,

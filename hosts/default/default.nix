@@ -55,11 +55,11 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wget
-    git
-    curl
-    htop
-    vim
+    wget # HTTP 下载工具
+    git # 版本控制系统
+    curl # 命令行 HTTP 请求工具
+    htop # 交互式进程监控器
+    vim # 终端文本编辑器
   ];
 
   services.openssh.enable = true;
