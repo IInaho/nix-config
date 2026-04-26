@@ -3,29 +3,34 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./secrets.nix
+  ];
+
   home.packages = with pkgs; [
-    xdg-utils      # xdg-open 等命令行工具
-    xdg-user-dirs  # 自动创建用户目录
+    xdg-utils
   ];
 
   xdg = {
     enable = true;
+    userDirs.enable = false;
+  };
 
-    # XDG 标准目录配置
-    cacheHome  = "${config.home.homeDirectory}/.cache";      # 缓存
-    configHome = "${config.home.homeDirectory}/.config";     # 配置
-    dataHome   = "${config.home.homeDirectory}/.local/share"; # 数据
-    stateHome  = "${config.home.homeDirectory}/.local/state"; # 状态
+  programs.bash = {
+    enable = true;
+    historyFile = "${config.xdg.stateHome}/bash/history";
+  };
 
-    userDirs = {
-      enable = true;
-      createDirectories = true;  # 自动创建 ~/Desktop, ~/Downloads 等目录
-
-      # 自定义用户目录
-      extraConfig = {
-        SCREENSHOTS = "${config.xdg.userDirs.pictures}/Screenshots";
-        DOWNLOADS   = "${config.home.homeDirectory}/Downloads";
-      };
-    };
+  home.sessionVariables = {
+    GOPATH = "${config.xdg.dataHome}/go";
+    PYTHON_HISTORY = "${config.xdg.stateHome}/python/history";
+    NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
+    NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/npmrc";
+    WGETRC = "${config.xdg.configHome}/wget/wgetrc";
+    LESSHISTFILE = "${config.xdg.stateHome}/less/history";
+    VIM = "${config.xdg.configHome}/vim";
+    VIMINIT = "set viminfo='100,n${config.xdg.stateHome}/vim/viminfo' | source $VIM/vimrc";
+    CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
   };
 }

@@ -3,7 +3,7 @@
 {
   home.packages = [ pkgs.starship ];
 
-  home.file.".config/starship.toml".source = ./starship.toml;
+  xdg.configFile."starship.toml".source = ./starship.toml;
 
   programs.fish = {
     enable = true;

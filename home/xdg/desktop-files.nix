@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  # 为没有图标的应用程序添加默认图标
-  # 放在 ~/.local/share/applications/ 让 fuzzel 能找到
-  home.file.".local/share/applications/yazi.desktop".source = pkgs.writeTextFile {
+  xdg.dataFile."applications/yazi.desktop".source = pkgs.writeTextFile {
     name = "yazi.desktop";
     text = ''
       [Desktop Entry]
@@ -19,7 +17,7 @@
     '';
   };
 
-  home.file.".local/share/applications/xterm.desktop".source = pkgs.writeTextFile {
+  xdg.dataFile."applications/xterm.desktop".source = pkgs.writeTextFile {
     name = "xterm.desktop";
     text = ''
       [Desktop Entry]
@@ -33,7 +31,7 @@
     '';
   };
 
-  home.file.".local/share/applications/kbd-layout-viewer5.desktop".source = pkgs.writeTextFile {
+  xdg.dataFile."applications/kbd-layout-viewer5.desktop".source = pkgs.writeTextFile {
     name = "kbd-layout-viewer5.desktop";
     text = ''
       [Desktop Entry]

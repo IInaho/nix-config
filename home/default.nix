@@ -35,6 +35,7 @@
     gifski # mp4 转 gif 工具
     ffmpeg # 视频处理工具
     openssl
+    age # 加密工具
 
     net-tools # 网络工具
     translate-shell # 命令行翻译工具

@@ -10,6 +10,7 @@
     ./i18n.nix
     ./clash-verge.nix
     ./xwayland.nix
+    ./secrets.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

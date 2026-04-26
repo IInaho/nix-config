@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -30,12 +35,14 @@
       nixvim,
       noctalia,
       claude-code,
+      agenix,
       ...
     }@inputs:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 
         modules = [
+          agenix.nixosModules.default
           (
             { ... }:
             {

@@ -8,11 +8,15 @@ in
 
   home.shell.enableZshIntegration = true;
 
+  xdg.configFile."zsh/p10k.zsh".source = ./p10k.zsh;
+
   programs.zsh = {
     enable = true;
+    history.path = "${config.xdg.stateHome}/zsh/history";
     initContent = ''
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+      source ${config.xdg.configHome}/zsh/p10k.zsh
+      ZSH_COMPDUMP="${config.xdg.cacheHome}/zsh/zcompdump-''${ZSH_VERSION}"
     '';
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -21,6 +25,4 @@ in
       plugins = [ "git" ];
     };
   };
-
-  home.file.".p10k.zsh".source = ./shell/zsh/p10k.zsh;
 }

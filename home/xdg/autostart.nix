@@ -5,8 +5,8 @@
   xdg.autostart.enable = true;
 
   xdg.autostart.entries = [
-    "${pkgs.kitty}/share/applications/kitty.desktop"
-    "${pkgs.google-chrome}/share/applications/google-chrome.desktop"
-    "${pkgs.telegram-desktop}/share/applications/telegram-desktop.desktop"
+    # "${pkgs.kitty}/share/applications/kitty.desktop"
+    # "${pkgs.google-chrome}/share/applications/google-chrome.desktop"
+    # "${pkgs.telegram-desktop}/share/applications/telegram-desktop.desktop"
   ];
 }
