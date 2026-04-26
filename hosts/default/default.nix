@@ -41,11 +41,10 @@
     ];
   };
 
-  # users.users.lznauy.shell = pkgs.zsh;
   users.users.lznauy.shell = pkgs.fish;
 
-  # programs.zsh.enable = true;
   programs.fish.enable = true;
+  programs.zsh.enable = true;
 
   programs.niri.enable = true;
   services.displayManager.gdm.enable = true;

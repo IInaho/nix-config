@@ -205,7 +205,7 @@
         enabled = true;
         overviewEnabled = true;
         useSolidColor = false;
-        directory = "${config.home.homeDirectory}/.config/noctalia/wallpapers";
+        directory = "${config.xdg.configHome}/noctalia/wallpapers";
         viewMode = "crop";
         wallpaperChangeMode = "random";
       };
@@ -272,8 +272,8 @@
     };
   };
 
-  home.file.".config/noctalia/wallpapers" = {
-    source = ./wallpapers;
+  xdg.configFile."noctalia/wallpapers" = {
+    source = ../wallpapers;
     recursive = true;
     force = true;
   };

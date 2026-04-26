@@ -64,7 +64,4 @@
     };
   };
 
-  home.packages = with pkgs; [
-    cava
-  ];
 }

@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    # ./zsh/zsh.nix
     ./fish/fish.nix
+    ./zsh/zsh.nix
   ];
 }

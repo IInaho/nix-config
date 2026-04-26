@@ -2,8 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # 开发工具
-    git
     gcc
     gnumake
     nodejs

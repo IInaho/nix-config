@@ -3,10 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./secrets.nix
-  ];
-
   home.packages = with pkgs; [
     xdg-utils
   ];
@@ -28,9 +24,8 @@
     NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/npmrc";
     WGETRC = "${config.xdg.configHome}/wget/wgetrc";
     LESSHISTFILE = "${config.xdg.stateHome}/less/history";
-    VIM = "${config.xdg.configHome}/vim";
-    VIMINIT = "set viminfo='100,n${config.xdg.stateHome}/vim/viminfo' | source $VIM/vimrc";
     CARGO_HOME = "${config.xdg.dataHome}/cargo";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+    CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
   };
 }
