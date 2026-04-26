@@ -37,7 +37,6 @@
       startupify.enable = true;
       neo-tree.enable = true;
       vim-surround.enable = true;
-      nvim-cmp.enable = true;
       gitsigns.enable = true;
       telescope.enable = true;
       treesitter = {
@@ -48,6 +47,14 @@
           "python"
           "vim"
           "vimdoc"
+          "nix"
+          "go"
+          "javascript"
+          "typescript"
+          "tsx"
+          "json"
+          "html"
+          "css"
         ];
         highlight = {
           enable = true;
@@ -56,7 +63,52 @@
           enable = false;
         };
       };
-      lsp.enable = true;
+
+      # LSP 服务器
+      lsp = {
+        enable = true;
+        servers = {
+          # Nix
+          nil_ls.enable = true;
+          # Bash
+          bashls.enable = true;
+          # Python
+          pyright.enable = true;
+          # Go
+          gopls.enable = true;
+          # JavaScript / TypeScript
+          ts_ls.enable = true;
+          # JSON
+          jsonls.enable = true;
+          # HTML / CSS
+          html.enable = true;
+          cssls.enable = true;
+        };
+      };
+
+      # 补全
+      cmp = {
+        enable = true;
+        settings = {
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+          mapping = {
+            "<C-b>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-e>" = "cmp.mapping.abort()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<Tab>" = "cmp.mapping(function(fallback) if cmp.visible() then cmp.select_next_item() else fallback() end end, { 'i', 's' })";
+            "<S-Tab>" = "cmp.mapping(function(fallback) if cmp.visible() then cmp.select_prev_item() else fallback() end end, { 'i', 's' })";
+          };
+        };
+      };
+      cmp-nvim-lsp.enable = true;
+      cmp-path.enable = true;
+      cmp-buffer.enable = true;
     };
   };
 }
