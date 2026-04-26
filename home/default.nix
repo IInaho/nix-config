@@ -30,7 +30,7 @@
     ./programs/fastfetch.nix
     ./programs/git.nix
     ./programs/nh.nix
-    ./programs/nixvim.nix
+    ./programs/nixvim/default.nix
     ./programs/system-tui.nix
   ];
 
