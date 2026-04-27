@@ -26,6 +26,8 @@
     LESSHISTFILE = "${config.xdg.stateHome}/less/history";
     CARGO_HOME = "${config.xdg.dataHome}/cargo";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
-    CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
+    
+    # hm模块programs.claude-code 模块硬编码写入 ~/.claude/
+    # CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
   };
 }
