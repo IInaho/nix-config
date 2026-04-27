@@ -21,7 +21,7 @@
     ./xdg/mime.nix
     ./xdg/autostart.nix
     ./xdg/desktop-files.nix
-    ./programs/ai.nix
+    ./programs/ai/default.nix
     ./programs/apps.nix
     ./programs/asciinema.nix
     ./programs/btm.nix
