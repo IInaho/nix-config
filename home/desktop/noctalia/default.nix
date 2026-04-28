@@ -238,7 +238,6 @@
         screenshotAnnotationTool = ""; # 截图标注工具
       };
       colorSchemes = {
-        predefinedScheme = "Dracula";
         darkMode = true;
       };
       network = {

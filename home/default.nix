@@ -8,6 +8,7 @@
   home.stateVersion = "26.05";
 
   imports = [
+    ./stylix/default.nix
     ./base/fcitx5.nix
     ./base/secrets.nix
     ./desktop/niri/default.nix
@@ -21,6 +22,7 @@
     ./xdg/mime.nix
     ./xdg/autostart.nix
     ./xdg/desktop-files.nix
+    ./programs/qutebrowser/default.nix
     ./programs/ai/default.nix
     ./programs/apps.nix
     ./programs/asciinema.nix

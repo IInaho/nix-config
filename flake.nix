@@ -30,6 +30,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -42,6 +47,7 @@
       claude-code,
       agenix,
       quien,
+      stylix,
       ...
     }@inputs:
     {
@@ -73,6 +79,7 @@
             home-manager.sharedModules = [
               inputs.nixvim.homeModules.nixvim
               inputs.noctalia.homeModules.default
+              inputs.stylix.homeManagerModules.stylix
             ];
 
             home-manager.users.lznauy = import ./home/default.nix;

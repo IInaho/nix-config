@@ -30,10 +30,6 @@
     # Plugins
     plugins = {
       web-devicons.enable = true;
-      tokyonight = {
-        enable = true;
-        style = "night";
-      };
       startupify.enable = true;
       neo-tree.enable = true;
       vim-surround.enable = true;

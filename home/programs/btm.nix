@@ -1,5 +1,8 @@
 # bottom - 终端系统资源监控工具
-{ ... }:
+{ config, ... }:
+let
+  colors = config.lib.stylix.colors;
+in
 {
   programs.bottom = {
     enable = true;
@@ -32,67 +35,67 @@
       styles = {
         tables = {
           headers = {
-            color = "#8be9fd";
+            color = "#${colors.base0C}";
           };
         };
 
         cpu = {
-          all_entry_color = "#f8f8f2";
-          avg_entry_color = "#ffb86c";
+          all_entry_color = "#${colors.base05}";
+          avg_entry_color = "#${colors.base09}";
           cpu_core_colors = [
-            "#bd93f9"
-            "#ff79c6"
-            "#f1fa8c"
-            "#50fa7b"
-            "#8be9fd"
-            "#ffb86c"
-            "#ff5555"
-            "#6272a4"
+            "#${colors.base0E}"
+            "#${colors.base0F}"
+            "#${colors.base0A}"
+            "#${colors.base0B}"
+            "#${colors.base0C}"
+            "#${colors.base09}"
+            "#${colors.base08}"
+            "#${colors.base03}"
           ];
         };
 
         memory = {
-          ram_color = "#50fa7b";
-          swap_color = "#ff79c6";
+          ram_color = "#${colors.base0B}";
+          swap_color = "#${colors.base0F}";
           gpu_colors = [
-            "#bd93f9"
-            "#ff79c6"
-            "#ffb86c"
-            "#8be9fd"
-            "#50fa7b"
-            "#f1fa8c"
+            "#${colors.base0E}"
+            "#${colors.base0F}"
+            "#${colors.base09}"
+            "#${colors.base0C}"
+            "#${colors.base0B}"
+            "#${colors.base0A}"
           ];
-          arc_color = "#8be9fd";
+          arc_color = "#${colors.base0C}";
         };
 
         network = {
-          rx_color = "#50fa7b";
-          tx_color = "#ff79c6";
+          rx_color = "#${colors.base0B}";
+          tx_color = "#${colors.base0F}";
         };
 
         widgets = {
           widget_title = {
-            color = "#bd93f9";
+            color = "#${colors.base0E}";
           };
-          border_color = "#44475a";
-          selected_border_color = "#bd93f9";
+          border_color = "#${colors.base01}";
+          selected_border_color = "#${colors.base0E}";
           text = {
-            color = "#f8f8f2";
+            color = "#${colors.base05}";
           };
           selected_text = {
-            color = "#282a36";
-            bg_color = "#bd93f9";
+            color = "#${colors.base00}";
+            bg_color = "#${colors.base0E}";
           };
         };
 
         graphs = {
-          graph_color = "#44475a";
+          graph_color = "#${colors.base01}";
         };
 
         battery = {
-          high_battery_color = "#50fa7b";
-          medium_battery_color = "#f1fa8c";
-          low_battery_color = "#ff5555";
+          high_battery_color = "#${colors.base0B}";
+          medium_battery_color = "#${colors.base0A}";
+          low_battery_color = "#${colors.base08}";
         };
       };
     };

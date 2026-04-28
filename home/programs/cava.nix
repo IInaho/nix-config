@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  colors = config.lib.stylix.colors;
+in
 {
   programs.cava = {
     enable = true;
@@ -32,18 +35,18 @@
         channels = "stereo";
       };
 
-      # 颜色设置 - 保留 Stylix 颜色
+      # 颜色设置 - Stylix 主题色
       color = {
         gradient = 1;
         gradient_count = 8;
-        gradient_color_1 = "'#8be9fd'";
-        gradient_color_2 = "'#69ffab'";
-        gradient_color_3 = "'#50fa7b'";
-        gradient_color_4 = "'#f1fa8c'";
-        gradient_color_5 = "'#ffb86c'";
-        gradient_color_6 = "'#ff79c6'";
-        gradient_color_7 = "'#bd93f9'";
-        gradient_color_8 = "'#bd93f9'";
+        gradient_color_1 = "'#${colors.base0C}'"; # cyan
+        gradient_color_2 = "'#${colors.base0B}'"; # green
+        gradient_color_3 = "'#${colors.base0B}'"; # green
+        gradient_color_4 = "'#${colors.base0A}'"; # yellow
+        gradient_color_5 = "'#${colors.base09}'"; # orange
+        gradient_color_6 = "'#${colors.base0E}'"; # magenta
+        gradient_color_7 = "'#${colors.base0E}'"; # magenta
+        gradient_color_8 = "'#${colors.base0D}'"; # blue
       };
 
       # 平滑设置 - 与示例对齐

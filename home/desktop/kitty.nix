@@ -1,19 +1,16 @@
 # kitty - GPU 加速终端模拟器
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   programs.kitty = {
     enable = true;
 
-    font = {
-      name = "FiraCode Nerd Font Mono";
-      size = 16;
-    };
+    # 字体由 stylix target 自动配置
 
     settings = {
       dynamic_background_opacity = "yes";
       hide_window_decorations = "yes";
-      backgroud_opacity = "0.92";
+      background_opacity = lib.mkForce "0.95";
       tab_bar_edge = "bottom";
       tab_bar_min_tabs = "1";
       confirm_os_window_close = "0";
@@ -21,6 +18,5 @@
       allow_hyperlinks = "no";
     };
 
-    themeFile = "VSCode_Dark";
   };
 }
