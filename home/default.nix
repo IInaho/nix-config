@@ -72,5 +72,6 @@
     mkcert # 本地 HTTPS 证书生成工具
     comma # 使用逗号临时运行未安装的程序
     wayscrollshot # Wayland 滚动截图工具
+    upx # 可执行文件压缩工具
   ];
 }
