@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
@@ -63,6 +64,8 @@
     chafa # 终端图像渲染工具
     yazi # 终端文件管理器
     tmux # 终端复用器
+    age # age 加密工具
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default # agenix 秘密管理工具
     sops # 密钥加密管理工具
     nixfmt-tree # Nix 代码格式化工具
     just # 命令运行器(Makefile 替代品)
