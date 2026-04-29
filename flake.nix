@@ -35,6 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -62,8 +67,10 @@
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [
                 claude-code.overlays.default
+                inputs.nur.overlays.default
                 (final: prev: {
                   quien = quien.packages.${prev.stdenv.hostPlatform.system}.default;
+                  wayscrollshot = final.callPackage ./pkgs/wayscrollshot.nix { };
                 })
               ];
             }

@@ -132,6 +132,7 @@ binds {
     // 截图
     // -------------------------
     Mod+Shift+G { spawn-sh "grim -g \"$(slurp)\" - | wl-copy"; }
+    Mod+Shift+S { spawn "wayscrollshot"; }
 
     // -------------------------
     // 其他
