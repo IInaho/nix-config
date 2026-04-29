@@ -56,6 +56,7 @@
       ...
     }@inputs:
     {
+      # 主系统（当前 VMware 桌面机）
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 
         modules = [
@@ -95,6 +96,8 @@
         specialArgs = { inherit inputs; };
       };
 
-      devShells.x86_64-linux = import ./shells.nix { pkgs = nixpkgs.legacyPackages.x86_64-linux; };
-    };
+      devShells.x86_64-linux = import ./home/programs/devshell/default.nix { pkgs = nixpkgs.legacyPackages.x86_64-linux; };
+
+    }
+    // (import ./hosts/virtual/default.nix { inherit nixpkgs; });
 }
