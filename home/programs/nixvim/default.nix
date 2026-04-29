@@ -4,6 +4,7 @@
 {
   home.packages = with pkgs; [
     tree-sitter # 语法解析器生成器（nixvim treesitter 依赖）
+    imagemagick # image.nvim 图片处理依赖
   ];
 
   programs.nixvim = {
@@ -33,6 +34,20 @@
 
     # Plugins
     plugins = {
+      # 图片预览 (Kitty graphics protocol)
+      image = {
+        enable = true;
+        settings = {
+          backend = "kitty";
+          max_width_window_percentage = 80;
+          max_height_window_percentage = 80;
+          integrations = {
+            markdown.enabled = true;
+            html.enabled = true;
+            css.enabled = true;
+          };
+        };
+      };
       web-devicons.enable = true;
       startupify.enable = true;
       neo-tree.enable = true;

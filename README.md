@@ -1,69 +1,140 @@
+<div align="center">
+
 # lznauy's NixOS Flake
 
-我的 NixOS 个人配置，持续完善中。
+**我的 NixOS 个人配置，持续完善中。**
 
+![NixOS](https://img.shields.io/badge/NixOS-unstable-blue?style=flat&logo=nixos&logoColor=white)
+![Wayland](https://img.shields.io/badge/Wayland-Niri-8800aa?style=flat&logo=wayland&logoColor=white)
+![Neovim](https://img.shields.io/badge/Neovim-Nixvim-57A143?style=flat&logo=neovim&logoColor=white)
+![Fish](https://img.shields.io/badge/Shell-Fish-4C9900?style=flat&logo=gnubash&logoColor=white)
+![Claude](https://img.shields.io/badge/AI-Claude_Code-D97757?style=flat&logo=anthropic&logoColor=white)
 
-![desktop](./img/desktop.png)
+<br/>
 
-## 系统概览
+<img src="./img/desktop.png" width="100%" alt="desktop screenshot"/>
 
-- **桌面**: Niri (Wayland 合成器) + Noctalia Shell
-- **Shell**: Fish / Zsh
-- **编辑器**: Nixvim
-- **主题**: Stylix + 自定义 midnight 配色
-- **AI 工具**: Claude Code / OpenCode
+</div>
 
-## 架构设计
+## Architecture
+
+<table>
+<tr>
+<td width="50%">
 
 ### 双机配置
 
-flake.nix 输出两套 `nixosConfigurations`：
+flake 输出两套 `nixosConfigurations`：
 
-- **nixos** — 主机 (VMware 桌面机)，完整桌面环境 + Home Manager
-- **vm-k3s** — K3s 集群虚拟机，独立精简配置
+| 主机 | 用途 |
+|------|------|
+| `nixos` | 主机 — VMware 桌面机，完整桌面 + HM |
+| `vm-k3s` | K3s 集群虚拟机，精简配置 |
 
-两者共享 `hosts/base.nix` 作为公共基础。
+两者共享 `hosts/base.nix` 公共基础。
 
-### Home Manager 集成
+</td>
+<td width="50%">
+
+### 目录结构
+
+```
+hosts/           → 系统层配置
+  base.nix         公共基础
+  default/         主机
+  virtual/         虚拟机
+home/            → 用户层配置
+  base/            密钥、输入法
+  desktop/         窗口、面板、终端
+  shell/           Fish、Zsh
+  programs/        应用与工具
+  stylix/          主题
+secrets/         → agenix 密钥
+```
+
+</td>
+</tr>
+</table>
+
+## Modules
+
+<details>
+<summary><b>Home Manager 集成</b></summary>
+
+<br/>
 
 Home Manager 作为 NixOS 模块集成（非独立 flake），用户配置统一在 `home/` 下：
 
 ```
 home/
-├── default.nix        # 入口，汇总所有 packages 和 imports
-├── base/              # 基础设施：密钥管理、输入法 (fcitx5)
-├── desktop/           # 桌面组件：niri、noctalia、hyprlock、kitty、fuzzel
-├── shell/             # Shell 配置：fish、zsh
+├── default.nix        # 入口，汇总 packages 和 imports
+├── base/              # 密钥管理、fcitx5 输入法
+├── desktop/           niri · noctalia · hyprlock · kitty · fuzzel
+├── shell/             fish · zsh
 ├── programs/
-│   ├── ai/            # AI 工具 + skills/rules 系统
-│   ├── devshell/      # 模块化开发环境
-│   ├── nixvim/        # Neovim 配置
-│   └── apps.nix       # 日常应用
-├── xdg/               # XDG 规范：MIME 类型、自启动、桌面文件
-└── stylix/            # 主题配置
+│   ├── ai/            Claude Code / OpenCode + skills 复用
+│   ├── devshell/      模块化开发环境
+│   ├── nixvim/        Neovim 配置
+│   └── apps.nix       日常应用
+├── xdg/               MIME 类型、自启动、桌面文件
+└── stylix/            主题配置
 ```
 
-### 模块化开发环境
+</details>
 
-`devshell/` 按语言拆分为独立模块，通过 `inputsFrom` 组合：
+<details>
+<summary><b>模块化开发环境</b></summary>
 
-- `base.nix` — 通用工具链
-- `python.nix` / `node.nix` / `go.nix` — 语言特定工具
+<br/>
 
-`default.nix` 定义组合矩阵：`default` = 全部，`python`/`node`/`go` = 单语言 + base。
+`devshell/` 按语言拆分，通过 `inputsFrom` 组合：
 
-### AI Skills 系统
+| 模块 | 内容 |
+|------|------|
+| `base.nix` | 通用工具链 |
+| `python.nix` | Python 工具 |
+| `node.nix` | Node.js 工具 |
+| `go.nix` | Go 工具 |
 
-`programs/ai/` 通过统一的 skills/rules/context 接口同时配置 Claude Code 和 OpenCode，技能定义在 `skills/` 子目录下复用。
+组合矩阵：`default` = 全部 · `python` / `node` / `go` = 单语言 + base
 
-### 主题方案
+</details>
 
-Stylix 采用 `autoEnable = false` 策略，仅对显式声明的目标（kitty、nixvim、fuzzel）生效，避免干扰手动配置的组件（noctalia、hyprlock、starship）。配色支持自定义 YAML 和内置 base16 方案切换。
+<details>
+<summary><b>AI Skills 系统</b></summary>
 
-### 密钥管理
+<br/>
 
-使用 agenix 管理敏感配置，密钥定义在 `secrets/secrets.nix`，主机和用户层分别通过 `hosts/*/secrets.nix` 和 `home/base/secrets.nix` 引用。
+`programs/ai/` 通过统一的 skills / rules / context 接口同时配置 Claude Code 和 OpenCode，技能定义在 `skills/` 子目录下复用。
 
-## 许可
+</details>
 
-MIT
+<details>
+<summary><b>主题方案</b></summary>
+
+<br/>
+
+Stylix 采用 `autoEnable = false` 策略，仅对显式声明的目标生效（kitty、nixvim、fuzzel），避免干扰手动配置的组件（noctalia、hyprlock、starship）。配色支持自定义 YAML 和内置 base16 方案切换。
+
+当前方案：**midnight**（自定义暗色配色）
+
+</details>
+
+<details>
+<summary><b>密钥管理</b></summary>
+
+<br/>
+
+使用 [agenix](https://github.com/ryantm/agenix) 管理敏感配置，密钥定义在 `secrets/secrets.nix`，主机层和用户层分别通过 `hosts/*/secrets.nix` 和 `home/base/secrets.nix` 引用。
+
+</details>
+
+---
+
+<div align="center">
+
+**Tech Stack**
+
+`NixOS` · `Niri` · `Noctalia Shell` · `Fish` · `Nixvim` · `Stylix` · `Claude Code` · `OpenCode` · `agenix` · `Docker` · `K3s`
+
+</div>
