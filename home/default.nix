@@ -56,6 +56,8 @@
     dive # Docker 镜像层分析工具
     lsof # 查看打开文件工具
     wget # HTTP 下载工具
+    posting # postman终端版
+    gh-dash # github终端版
 
     tree # 目录树展示工具
     fd # 快速文件查找工具
@@ -64,6 +66,7 @@
     chafa # 终端图像渲染工具
     yazi # 终端文件管理器
     tmux # 终端复用器
+    gonzo # 日志分析工具
     age # age 加密工具
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default # agenix 秘密管理工具
     sops # 密钥加密管理工具
