@@ -55,47 +55,57 @@
       stylix,
       ...
     }@inputs:
-    {
-      # 主系统（当前 VMware 桌面机）
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-
-        modules = [
-          agenix.nixosModules.default
-          (
-            { ... }:
-            {
-              nixpkgs.hostPlatform = "x86_64-linux";
-              nixpkgs.config.allowUnfree = true;
-              nixpkgs.overlays = [
-                claude-code.overlays.default
-                inputs.nur.overlays.default
-                (final: prev: {
-                  quien = quien.packages.${prev.stdenv.hostPlatform.system}.default;
-                  wayscrollshot = final.callPackage ./pkgs/wayscrollshot.nix { };
-                })
-              ];
-            }
-          )
-          ./hosts/default/hardware.nix
-          ./hosts/default/default.nix
-
-          home-manager.nixosModules.home-manager
+    let
+      commonModules = [
+        agenix.nixosModules.default
+        (
+          { ... }:
           {
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.sharedModules = [
-              inputs.nixvim.homeModules.nixvim
-              inputs.noctalia.homeModules.default
-              inputs.stylix.homeModules.stylix
+            nixpkgs.hostPlatform = "x86_64-linux";
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = [
+              claude-code.overlays.default
+              inputs.nur.overlays.default
+              (final: prev: {
+                quien = quien.packages.${prev.stdenv.hostPlatform.system}.default;
+                wayscrollshot = final.callPackage ./pkgs/wayscrollshot.nix { };
+              })
             ];
-
-            home-manager.users.lznauy = import ./home/default.nix;
           }
-        ];
+        )
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.sharedModules = [
+            inputs.nixvim.homeModules.nixvim
+            inputs.noctalia.homeModules.default
+            inputs.stylix.homeModules.stylix
+          ];
+
+          home-manager.users.lznauy = import ./home/default.nix;
+        }
+      ];
+
+      mkHost = hostModules: nixpkgs.lib.nixosSystem {
+        modules = commonModules ++ hostModules;
         specialArgs = { inherit inputs; };
       };
+    in
+    {
+      # VMware 桌面机
+      nixosConfigurations.nixos = mkHost [
+        ./hosts/vmware/hardware.nix
+        ./hosts/vmware/default.nix
+      ];
+
+      # 物理机
+      nixosConfigurations.physical = mkHost [
+        ./hosts/physical/hardware.nix
+        ./hosts/physical/default.nix
+      ];
 
       devShells.x86_64-linux = import ./home/programs/devshell/default.nix { pkgs = nixpkgs.legacyPackages.x86_64-linux; };
 

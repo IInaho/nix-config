@@ -4,7 +4,7 @@
 { pkgs, lib, ... }:
 {
   imports = [
-    ../base.nix
+    ../common/base.nix
     ./base.nix
   ];
 

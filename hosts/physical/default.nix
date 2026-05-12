@@ -7,11 +7,11 @@
 
 {
   imports = [
-    ../base.nix
-    ./i18n.nix
-    ./clash-verge.nix
-    ./xwayland.nix
-    ./secrets.nix
+    ../common/base.nix
+    ../common/i18n.nix
+    ../common/clash-verge.nix
+    ../common/xwayland.nix
+    ../common/secrets.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -20,10 +20,6 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  networking.proxy.default = "http://192.168.1.142:7897/";
-  networking.proxy.noProxy = "127.0.0.1,localhost";
-
-  virtualisation.vmware.guest.enable = true;
   virtualisation.docker.enable = true;
 
   users.users.lznauy = {
