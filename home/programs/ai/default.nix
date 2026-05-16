@@ -20,6 +20,14 @@ in
     context = all-context;
   };
 
+  # Codex 配置路径为 ~/.codex/
+  programs.codex = {
+    enable = true;
+    skills = all-skills;
+    rules = all-rules;
+    context = all-context;
+  };
+
   home.sessionVariables.CLAUDE_CODE_EXECUTABLE = "${pkgs.claude-code}/bin/claude";
 
   home.packages = with pkgs; [
