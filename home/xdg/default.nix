@@ -26,8 +26,14 @@
     LESSHISTFILE = "${config.xdg.stateHome}/less/history";
     CARGO_HOME = "${config.xdg.dataHome}/cargo";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
-    
+
     # hm模块programs.claude-code 模块硬编码写入 ~/.claude/
     # CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
   };
+
+  xdg.configFile."wget/wgetrc".text = ''
+    # wget 配置文件
+    # 默认空文件，仅用于 XDG base directory 合规
+    continue = on
+  '';
 }

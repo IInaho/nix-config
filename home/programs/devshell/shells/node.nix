@@ -3,6 +3,8 @@
 pkgs.mkShell {
   buildInputs = with pkgs; [
     nodejs
+    pnpm
+    typescript
   ];
 
   env = {

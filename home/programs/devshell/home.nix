@@ -5,8 +5,9 @@ let
   python = import ./shells/python.nix { inherit pkgs; };
   node = import ./shells/node.nix { inherit pkgs; };
   go = import ./shells/go.nix { inherit pkgs; };
+  rust = import ./shells/rust.nix { inherit pkgs; };
 
-  modules = [ base python node go ];
+  modules = [ base python node go rust ];
 in
 {
   home.packages = builtins.concatLists (map (m: m.buildInputs or []) modules);

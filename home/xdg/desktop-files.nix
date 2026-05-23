@@ -31,6 +31,24 @@
     '';
   };
 
+  xdg.dataFile."applications/blueman-adapters.desktop".source = pkgs.writeTextFile {
+    name = "blueman-adapters.desktop";
+    text = ''
+      [Desktop Entry]
+      Name=蓝牙适配器
+      Name[zh_CN]=蓝牙适配器
+      Name[en]=Bluetooth Adapters
+      Comment=设置蓝牙适配器属性
+      Comment[zh_CN]=设置蓝牙适配器属性
+      Exec=blueman-adapters
+      Icon=preferences-system-bluetooth
+      Terminal=false
+      Type=Application
+      Categories=Settings;HardwareSettings;GTK;
+      StartupNotify=true
+    '';
+  };
+
   xdg.dataFile."applications/kbd-layout-viewer5.desktop".source = pkgs.writeTextFile {
     name = "kbd-layout-viewer5.desktop";
     text = ''

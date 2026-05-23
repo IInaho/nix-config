@@ -1,6 +1,6 @@
 # Dynamic Island
 
-一个基于 Quickshell 的 Wayland 桌面歌词/时钟组件，灵感来自 Apple Dynamic Island。悬浮在屏幕底部，折叠时是一个小药丸，播放音乐时自动展开显示滚动歌词。
+一个基于 Quickshell 的 Wayland 桌面组件，灵感来自 Apple Dynamic Island。悬浮在屏幕底部，折叠时是一个小药丸，播放音乐时展开滚动歌词，支持实时语音翻译。
 
 ## 目录结构
 
@@ -17,7 +17,8 @@ dynamic-island/
 ├── Content/
 │   ├── qmldir                       # 模块声明
 │   ├── ClockContent.qml             # 折叠态时钟（日期 + 翻页数字表）
-│   └── LyricsContent.qml            # 歌词获取 & 同步显示
+│   ├── LyricsContent.qml            # 歌词获取 & 同步显示
+│   └── TranslationContent.qml       # 实时语音翻译（live-translator）
 └── scripts/
     └── lyrics_fetcher.py            # 歌词抓取（QQ音乐 → 网易云 → 回退）
 ```
@@ -39,6 +40,12 @@ dynamic-island/
 │  │  │  │ • 吸顶       │ │ • 歌词抓取(Process)│ │ │  │
 │  │  │  │ • 翻页时钟   │ │ • 时间同步(Timer) │  │ │  │
 │  │  │  └──────────────┘ └──────────────────┘  │ │  │
+│  │  │  ┌──────────────────────────────────┐   │ │  │
+│  │  │  │ TranslationContent               │   │ │  │
+│  │  │  │ • 麦克风 → ASR → NMT → 翻译文字   │   │ │  │
+│  │  │  │ • Process 调 live-translator     │   │ │  │
+│  │  │  │ • stdin JSON 命令 / stdout JSON   │   │ │  │
+│  │  │  └──────────────────────────────────┘   │ │  │
 │  │  └─────────────────────────────────────────┘ │  │
 │  └───────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────┘
@@ -161,3 +168,20 @@ home.packages = [
 ```
 
 启动：`qs-island`（自动加入 autostart 或手动执行）。
+
+## 语音翻译
+
+`TranslationContent` 组件调用 `live-translator` 进程，实现实时语音翻译：
+
+```
+麦克风 → VAD(Silero) → ASR(SenseVoiceSmall) → NMT(NLLB-600M, oneDNN) → 翻译文字
+```
+
+| 属性 | 说明 |
+|------|------|
+| `srcLang` / `tgtLang` | 源/目标语言（zh/ja/en/ko/yue） |
+| `start()` / `stop()` | 开始/停止监听 |
+| `partialText` | 中间识别结果 |
+| `finalText` / `translatedText` | 最终识别 + 翻译 |
+
+详见 [live-translator/README.md](live-translator/README.md)。

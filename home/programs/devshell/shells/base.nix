@@ -4,5 +4,9 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     gcc
     gnumake
+    binutils
+    cmake
+    pkg-config
+    alsa-lib
   ];
 }

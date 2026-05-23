@@ -154,6 +154,15 @@ Item {
             font.pixelSize: 13
         }
 
+        Text {
+            visible: !root.player
+            anchors.centerIn: parent
+            text: "请打开音乐"
+            color: Appearance.colors.colTextSub
+            font.family: Sizes.fontFamily
+            font.pixelSize: 13
+        }
+
         Row {
             id: leftSection
             anchors.left: parent.left; anchors.leftMargin: 15; anchors.verticalCenter: parent.verticalCenter
@@ -224,7 +233,7 @@ Item {
 
                 onIsCurrentChanged: {
                     if (isCurrent) {
-                        root.lyricsTextWidth = Math.max(root.lyricsTextWidth, Math.min(lyricText.implicitWidth, 800))
+                        root.lyricsTextWidth = Math.max(root.lyricsTextWidth, Math.min(lyricText.implicitWidth, 500))
                     }
                 }
 
